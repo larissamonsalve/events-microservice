@@ -1,4 +1,4 @@
-package com.monsalve.controllers;
+package com.monsalve.events_microservice.controllers;
 
 import com.monsalve.events_microservice.domain.Event;
 import com.monsalve.events_microservice.dtos.EventRequestDTO;
