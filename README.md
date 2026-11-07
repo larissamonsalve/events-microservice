@@ -6,9 +6,7 @@
 
 ## Sobre o Projeto
 
-Este projeto simula o funcionamento de uma plataforma de inscrições em eventos. A arquitetura foi pensada para desacoplar as responsabilidades de negócio, dividindo o sistema em microsserviços independentes focados em escalabilidade e manutenibilidade.
-
-O projeto aborda a comunicação entre serviços, gerenciamento de banco de dados, tratamento de exceções e envio de notificações por e-mail aos participantes.
+Microsserviço responsável pelo gerenciamento de eventos e inscrições de participantes, desenvolvido como parte do estudo de arquitetura de microsserviços utilizando **Java** e **Spring Boot**.
 
 ---
 
@@ -18,13 +16,25 @@ O projeto aborda a comunicação entre serviços, gerenciamento de banco de dado
 * **Spring Boot**
 * **Spring Web** (@RestController, DTOs e Mapeamento de Rotas)
 * **Spring Data JPA / Repositories**
-* **Banco de Dados Relacional** (Configuração via `application.properties`)
+* **Spring Cloud OpenFeign** (Para comunicação síncrona com o microsserviço de e-mails/mensageria)
+* **H2 Database** (Banco de dados em memória)
 
 ---
 
-## Arquitetura e Microsserviços
+## 🔗 Comunicação com Outros Serviços (OpenFeign)
 
-O sistema é dividido nos seguintes componentes principais:
+Este microsserviço de eventos realiza uma **comunicação síncrona** com o **Email Service** (serviço de mensageria) utilizando o **Spring Cloud OpenFeign**. 
+
+O fluxo de integração ocorre da seguinte forma:
+1. O cliente faz uma requisição para o endpoint de inscrição (`POST /events/{eventId}/register`).
+2. O serviço valida a disponibilidade e registra a inscrição do participante no banco de dados.
+3. Utilizando a interface configurada com `@FeignClient`, o microsserviço de eventos dispara automaticamente uma requisição HTTP interna para o serviço de e-mails (`http://localhost:8090/api/email/send`), enviando um *payload* contendo os dados necessários para o envio da notificação de confirmação.
+
+--- 
+
+## Arquitetura
+
+Dividido da seguinte forme:
 
 ### 1. Microsserviço de Eventos (`Event Service`)
 Responsável por gerenciar todo o ciclo de vida dos eventos e inscrições:
@@ -32,10 +42,6 @@ Responsável por gerenciar todo o ciclo de vida dos eventos e inscrições:
 * Filtro para retornar apenas eventos futuros (cuja data ainda não aconteceu).
 * Cadastro de novos eventos no banco de dados.
 * Processamento de novas inscrições de participantes em um evento específico.
-
-### 2. Microsserviço de Mensageria (`Email Service`)
-Responsável pelo disparo de notificações:
-* Envio de e-mails de confirmação contendo remetente, corpo e assunto (`payload`).
 
 ---
 
