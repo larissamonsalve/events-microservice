@@ -91,7 +91,7 @@ A aplicação disponibiliza as seguintes rotas principais:
 
 3. Clone este repositório:
    ```bash
-   git clone ([https://github.com/larissamonsalve/events-microservice.git](https://github.com/larissamonsalve/events-microservice.git))
+   git clone ([meu-repositorio](https://github.com/larissamonsalve/events-microservice.git))
 
 4. Configure o arquivo application.properties com as credenciais de conexão ao seu banco de dados.
 
