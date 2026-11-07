@@ -34,10 +34,8 @@ O fluxo de integração ocorre da seguinte forma:
 
 ## Arquitetura
 
-Dividido da seguinte forme:
+Estruturada em torno do **Microsserviço de Eventos (`Event Service`)**, que atua como o núcleo da aplicação e é responsável por gerenciar todo o ciclo de vida dos eventos e inscrições:
 
-### 1. Microsserviço de Eventos (`Event Service`)
-Responsável por gerenciar todo o ciclo de vida dos eventos e inscrições:
 * Listagem de todos os eventos disponíveis.
 * Filtro para retornar apenas eventos futuros (cuja data ainda não aconteceu).
 * Cadastro de novos eventos no banco de dados.
