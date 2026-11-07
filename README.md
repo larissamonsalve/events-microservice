@@ -71,6 +71,15 @@ A aplicação disponibiliza as seguintes rotas principais:
   "participantEmail": "usuario@email.com"
   }
   ```
+---
+
+## 🛠️ Testes de Requisições HTTP
+
+Para facilitar o teste e a validação dos endpoints dos microsserviços diretamente no VS Code sem a necessidade de instalar ferramentas externas (como o Postman), foi criada uma pasta `request` contendo o arquivo `test.http`. 
+
+Esta estrutura não estava presente na live original e foi adicionada para otimizar o fluxo de testes utilizando a extensão **REST Client** do VS Code.
+
+---
 
 ## Como Executar O Projeto
 
