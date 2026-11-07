@@ -21,9 +21,9 @@ Microsserviço responsável pelo gerenciamento de eventos e inscrições de part
 
 ---
 
-## 🔗 Comunicação com Outros Serviços (OpenFeign)
+## Comunicação com Outros Serviços (OpenFeign)
 
-Este microsserviço de eventos realiza uma **comunicação síncrona** com o **Email Service** (serviço de mensageria) utilizando o **Spring Cloud OpenFeign**. 
+Este microsserviço de eventos realiza uma **comunicação síncrona** com o **[email-microservice](https://github.com/larissamonsalve/email-microservice)** (serviço de mensageria) utilizando o **Spring Cloud OpenFeign**. 
 
 O fluxo de integração ocorre da seguinte forma:
 1. O cliente faz uma requisição para o endpoint de inscrição (`POST /events/{eventId}/register`).
