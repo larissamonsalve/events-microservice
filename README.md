@@ -39,6 +39,40 @@ Responsável pelo disparo de notificações:
 
 ---
 
+## 🔌 Endpoints da API
+
+A aplicação disponibiliza as seguintes rotas principais:
+
+### 1. Listar todos os eventos
+* **GET** `/events`
+* Retorna a lista completa de eventos cadastrados no sistema.
+
+### 2. Listar eventos futuros
+* **GET** `/events/upcoming`
+* Retorna apenas os eventos cuja data é posterior à data atual.
+
+### 3. Criar um novo evento
+* **POST** `/events`
+* **Exemplo de Body (JSON):**
+  ```json
+  {
+    "maxParticipants": 20,
+    "registeredParticipants": 0,
+    "date": "25/12/2026",
+    "title": "Workshop de Java e Microsserviços",
+    "description": "Aprendendo a criar arquiteturas distribuídas com Spring Boot."
+  }
+
+### 4. Inscrever um participante em um evento
+* **POST** `/events/{id}/register`
+* **Exemplo de Body (JSON):**
+ ```json
+ {
+  "participantEmail": "usuario@email.com"
+  }
+  ```
+
+
 ## 🏃‍♂️ Como Executar o Projeto
 
 1. Acesse o [Spring Initializr](https://start.spring.io/) para gerar a estrutura base com as dependências necessárias.
