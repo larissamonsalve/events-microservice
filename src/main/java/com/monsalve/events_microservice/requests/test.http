@@ -1,0 +1,27 @@
+@baseUrl = http://localhost:8080
+
+### 1. Listar todos os eventos
+GET {{baseUrl}}/events
+
+### 2. Listar eventos futuros
+GET {{baseUrl}}/events/upcoming
+
+### 3. Criar um novo evento
+POST {{baseUrl}}/events
+Content-Type: application/json
+
+{
+  "maxParticipants": 10,
+  "registeredParticipants": 0,
+  "date": "25/12/2026",
+  "title": "Workshop de Java e Microsserviços",
+  "description": "Aprendendo a criar arquiteturas distribuídas com Spring Boot."
+}
+
+### 4. Inscrever um participante em um evento
+POST {{baseUrl}}/events/dc392d4a-cdd4-490e-b81a-62bd19e47d98/register
+Content-Type: application/json
+
+{
+  "participantEmail": "usuario@email.com"
+}
